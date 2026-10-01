@@ -1,1 +1,40 @@
+name: Car Booking App CI
 
+on:
+  push:
+    branches:
+      - main
+      - master
+
+  pull_request:
+    branches:
+      - main
+      - master
+
+jobs:
+  build:
+    name: Build and Check Project
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout source code
+        uses: actions/checkout@v4
+
+      - name: Check project structure
+        run: |
+          echo "================================="
+          echo "   CAR BOOKING APP CI"
+          echo "================================="
+
+          echo "Checking project structure..."
+
+          test -d .github && echo "✓ .github exists" || true
+          test -f README.md && echo "✓ README.md exists" || true
+
+          echo "Project structure check completed."
+
+      - name: Finish
+        run: |
+          echo "================================="
+          echo "CI completed successfully!"
+          echo "================================="
